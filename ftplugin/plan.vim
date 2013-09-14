@@ -17,6 +17,12 @@ if exists("g:plan_default_config")
     set softtabstop     =2
     set tabstop         =2
 
+    set foldmethod      =marker
+    set foldcolumn      =2
+    set commentstring   =""
+    set comments        =:*,:-,:>,:.
+    set formatoptions   =cqo2
+
     " Mappings
     noremap  <leader>d  :call plan#done_add()<CR>
     noremap  <leader>rd :call plan#done_del()<CR>
