@@ -18,13 +18,13 @@ if exists("g:plan_default_config")
     set tabstop         =2
 
     " Mappings
-    noremap  <leader>d  :call plan#PlanControlFunc("done", 1)<CR>
-    noremap  <leader>rd :call plan#PlanControlFunc("done", 0)<CR>
-    noremap  <leader>v  :call plan#PlanControlFunc("check", 1)<CR>
-    noremap  <leader>rv :call plan#PlanControlFunc("check", 0)<CR>
-    noremap  <leader>D  :call plan#PlanControlFunc("date", 1)<CR>
-    noremap  <leader>rD :call plan#PlanControlFunc("date", 0)<CR>
-    noremap  <leader>u  :call plan#PlanControlFunc("date", 0)<CR>:call PlanControlFunc("date", 1)<CR>
-    noremap  <leader>i  :call plan#PlanControlFunc("date_increment", 0)<CR>
+    noremap  <leader>d  :call plan#done_add()<CR>
+    noremap  <leader>rd :call plan#done_del()<CR>
+    noremap  <leader>v  :call plan#check_add()<CR>
+    noremap  <leader>rv :call plan#check_del()<CR>
+    noremap  <leader>D  :call plan#date_add()<CR>
+    noremap  <leader>rD :call plan#date_del()<CR>
+    noremap  <leader>u  :call plan#date_del()<CR>:call plan#date_add()<CR>
+    noremap  <leader>i  :call plan#date_inc()<CR>
     noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d/ %%")<CR>:cclose<CR>
 endif
