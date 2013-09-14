@@ -12,17 +12,24 @@ highlight link PlanCheck    Statement
 highlight link PlanComment  Comment
 highlight link PlanFuture   Constant
 
+" Date format definition
+if exists("g:plan_date_format")
+    let s:plan_date_format  = g:plan_date_format
+else
+    let s:plan_date_format  = "%Y\\/%m\\/%d"
+endif
+
 " Auxilliary constants
 let s:one_day = 86400
 
 " Highlight entries to be done today
-let s:dateregex=strftime("syntax match PlanToday /.*%Y\\/%m\\/%d.*/ contains=PlanDoneOld")
+let s:dateregex=strftime(printf("syntax match PlanToday /.*%s.*/ contains=PlanDoneOld", s:plan_date_format))
 exec s:dateregex
 
 " Highlight all items done during this week
 let s:date = localtime()
 while 1
-    let s:dateregex=strftime("syntax match PlanDoneOld  /(%Y\\/%m\\/%d.*\[XV\]$/", s:date)
+    let s:dateregex=strftime(printf("syntax match PlanDoneOld /(%s.*\[XV\]$/", s:plan_date_format), s:date)
     exec s:dateregex
     let s:date -= s:one_day
     if strftime("%u", s:date) == "5"
@@ -33,7 +40,7 @@ endwhile
 " Highlight items to be done until end of this week
 let s:date = localtime() + s:one_day
 while strftime("%u", s:date) != "6"
-    let s:dateregex=strftime("syntax match PlanFuture   /.*(%Y\\/%m\\/%d)$/", s:date)
+    let s:dateregex=strftime(printf("syntax match PlanFuture /.*(%s)$/", s:plan_date_format), s:date)
     exec s:dateregex
     let s:date += s:one_day
 endwhile
