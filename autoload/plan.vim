@@ -5,6 +5,7 @@
 " Version:      1.0
 
 function plan#date_add () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -15,8 +16,10 @@ function plan#date_add () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#date_del () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -27,8 +30,10 @@ function plan#date_del () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#date_inc () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -40,8 +45,10 @@ function plan#date_inc () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#done_add () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -52,8 +59,10 @@ function plan#done_add () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#done_del () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -64,8 +73,10 @@ function plan#done_del () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#check_add () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -76,8 +87,10 @@ function plan#check_add () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
 
 function plan#check_del () range
+"{{{
     let lnum   = a:firstline
 
     while lnum <= a:lastline
@@ -88,3 +101,6 @@ function plan#check_del () range
         let lnum += 1
     endwhile
 endfunction
+"}}}
+
+" vim: set fdm=marker:
