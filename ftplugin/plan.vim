@@ -26,5 +26,6 @@ if exists("g:plan_default_config")
     noremap  <leader>rD :call plan#date_del()<CR>
     noremap  <leader>u  :call plan#date_del()<CR>:call plan#date_add()<CR>
     noremap  <leader>i  :call plan#date_inc()<CR>
+    noremap  <leader>x  :call plan#date_dec()<CR>
     noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d/ %%")<CR>:cclose<CR>
 endif

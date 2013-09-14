@@ -47,6 +47,21 @@ function plan#date_inc () range
 endfunction
 "}}}
 
+function plan#date_dec () range
+"{{{
+    let lnum   = a:firstline
+
+    while lnum <= a:lastline
+        let currentline = getline(lnum)
+        let l:time      = system(printf("date -d %s +%%s", substitute(currentline, '.* (\(.*\)).*', '\1', '')))
+
+        call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time - 24*60*60)), ''))
+
+        let lnum += 1
+    endwhile
+endfunction
+"}}}
+
 function plan#done_add () range
 "{{{
     let lnum   = a:firstline
