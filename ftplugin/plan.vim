@@ -4,11 +4,6 @@
 " Last Update:  Thu 12 Sep 2013 23:56:16 PM WEST
 " Version:      1.0
 
-" Only do this when not done yet for this buffer
-if exists("b:did_ftplugin")
-  finish
-endif
-
 " General configurations
 if exists("g:plan_default_config")
 
