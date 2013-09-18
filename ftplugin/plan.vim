@@ -15,7 +15,6 @@ if exists("g:plan_default_config")
     set foldmethod      =marker
     set foldcolumn      =2
     set commentstring   =""
-    set comments        =:*,:-,:>,:.
     set formatoptions   =cqo2
 
     " Mappings
@@ -28,5 +27,21 @@ if exists("g:plan_default_config")
     noremap  <leader>u  :call plan#date_del()<CR>:call plan#date_add()<CR>
     noremap  <leader>i  :call plan#date_inc()<CR>
     noremap  <leader>x  :call plan#date_dec()<CR>
+    nnoremap <<         :call plan#shift_left()<CR>
+    nnoremap >>         :call plan#shift_right()<CR>
+    vnoremap <          :call plan#shift_left()<CR>
+    vnoremap >          :call plan#shift_right()<CR>
+    inoremap <C-d>      <ESC>:call plan#shift_left()<CR>i
+    inoremap <C-t>      <ESC>:call plan#shift_right()<CR>i
     noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d/ %%")<CR>:cclose<CR>
 endif
+
+" Bullets configuration
+if !exists("g:plan_bullets_list")
+    let g:plan_bullets_list=["*", "-", ">", "."]
+endif
+let s:bullets_list=[]
+for s:bullet in g:plan_bullets_list
+    call add(s:bullets_list, ":" . s:bullet)
+endfor
+let &comments=join(s:bullets_list, ",")

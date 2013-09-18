@@ -118,4 +118,60 @@ function plan#check_del () range
 endfunction
 "}}}
 
+function plan#shift_right () range
+"{{{
+    let lnum   = a:firstline
+
+    while lnum <= a:lastline
+        let currentline = getline(lnum)
+        let bullet_dict = plan#get_bullet(currentline)
+
+        if bullet_dict['index'] >= 0 && bullet_dict['index'] + 1 < len(g:plan_bullets_list)
+            let new_bullet = g:plan_bullets_list[bullet_dict['index'] + 1]
+            let currentline= substitute(currentline, bullet_dict['bullet'], new_bullet, "")
+            call setline(lnum, currentline)
+
+            normal! >>
+        endif
+
+        let lnum += 1
+    endwhile
+endfunction
+"}}}
+
+function plan#shift_left () range
+"{{{
+    let lnum   = a:firstline
+
+    while lnum <= a:lastline
+        let currentline = getline(lnum)
+        let bullet_dict = plan#get_bullet(currentline)
+
+        if bullet_dict['index'] >= 0 && bullet_dict['index'] - 1 >= 0
+            let new_bullet = g:plan_bullets_list[bullet_dict['index'] - 1]
+            let bullet = bullet_dict['bullet']
+            if index(["."], bullet) >= 0
+                let bullet = "\\" . bullet
+            endif
+            let currentline= substitute(currentline, bullet, new_bullet, "")
+            call setline(lnum, currentline)
+
+            normal! <<
+        endif
+
+        let lnum += 1
+    endwhile
+endfunction
+"}}}
+
+function plan#get_bullet (line)
+"{{{
+    let line_start = match(a:line, "[^ \t]")
+    let bullet = a:line[line_start]
+    let bullet_idx = index(g:plan_bullets_list, bullet)
+
+    return {'bullet': bullet, 'index': bullet_idx}
+endfunction
+"}}}
+
 " vim: set fdm=marker:
