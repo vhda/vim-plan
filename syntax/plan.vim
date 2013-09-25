@@ -49,7 +49,7 @@ endwhile
 syntax match PlanDone       /.*X$/ contains=PlanToday,PlanDoneOld
 
 " Highlight checked items
-syntax match PlanCheck      /.*V$/ contains=PlanToday
+syntax match PlanCheck      /.*V$/
 
 " Highlight headers
 syntax match PlanComment    /^---.*\n.*\n---.*/
