@@ -16,6 +16,7 @@ if exists("g:plan_default_config")
     set foldcolumn      =2
     set commentstring   =""
     set formatoptions   =cqo2
+    set foldtext        =plan#get_fold_text()
 
     " Mappings
     noremap  <leader>d  :call plan#done_add()<CR>
