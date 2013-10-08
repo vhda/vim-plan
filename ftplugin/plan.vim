@@ -34,7 +34,7 @@ if exists("g:plan_default_config")
     vnoremap >          :call plan#shift_right()<CR>
     inoremap <C-d>      <ESC>:call plan#shift_left()<CR>i
     inoremap <C-t>      <ESC>:call plan#shift_right()<CR>i
-    noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d/ %%")<CR>:cclose<CR>
+    noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d)$/ %%")<CR>:cclose<CR>
 endif
 
 " Bullets configuration
