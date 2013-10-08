@@ -40,7 +40,9 @@ function plan#date_inc () range
         let currentline = getline(lnum)
         let l:time      = system(printf("date -d %s +%%s", substitute(currentline, '.* (\(.*\)).*', '\1', '')))
 
-        call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time + 24*60*60)), ''))
+        if !plan#is_done(currentline)
+            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time + 24*60*60)), ''))
+        endif
 
         let lnum += 1
     endwhile
@@ -55,7 +57,9 @@ function plan#date_dec () range
         let currentline = getline(lnum)
         let l:time      = system(printf("date -d %s +%%s", substitute(currentline, '.* (\(.*\)).*', '\1', '')))
 
-        call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time - 24*60*60)), ''))
+        if !plan#is_done(currentline)
+            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time - 24*60*60)), ''))
+        endif
 
         let lnum += 1
     endwhile
@@ -185,6 +189,17 @@ function plan#get_fold_text ()
     endif
 
     return sub
+endfunction
+"}}}
+
+function plan#is_done (line)
+"{{{
+    let last_char = strlen(a:line) - 1
+    if index(["X", "V"], a:line[last_char]) >= 0
+        return 1
+    else
+        return 0
+    endif
 endfunction
 "}}}
 
