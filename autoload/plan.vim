@@ -130,12 +130,12 @@ function plan#shift_right () range
             let new_bullet = g:plan_bullets_list[bullet_dict['index'] + 1]
             let currentline= substitute(currentline, bullet_dict['bullet'], new_bullet, "")
             call setline(lnum, currentline)
-
-            normal! >>
         endif
 
         let lnum += 1
     endwhile
+
+    execute a:firstline . "," . a:lastline . ">"
 endfunction
 "}}}
 
@@ -155,12 +155,12 @@ function plan#shift_left () range
             endif
             let currentline= substitute(currentline, bullet, new_bullet, "")
             call setline(lnum, currentline)
-
-            normal! <<
         endif
 
         let lnum += 1
     endwhile
+
+    execute a:firstline . "," . a:lastline . "<"
 endfunction
 "}}}
 
