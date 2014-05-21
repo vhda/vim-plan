@@ -25,7 +25,7 @@ function plan#date_del () range
     while lnum <= a:lastline
         let currentline = getline(lnum)
 
-        call setline(lnum, substitute(currentline, ' \.\+ (.*)$', "", ""))
+        call setline(lnum, substitute(currentline, ' \.\+ ([^)]\+)$', "", ""))
 
         let lnum += 1
     endwhile
