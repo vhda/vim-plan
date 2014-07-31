@@ -203,4 +203,10 @@ function plan#is_done (line)
 endfunction
 "}}}
 
+function plan#syntax_update ()
+"{{{
+    runtime syntax/plan.vim
+endfunction
+"}}}
+
 " vim: set fdm=marker:

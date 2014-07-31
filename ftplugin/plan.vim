@@ -46,3 +46,6 @@ for s:bullet in g:plan_bullets_list
     call add(s:bullets_list, ":" . s:bullet)
 endfor
 let &comments=join(s:bullets_list, ",")
+
+" Command declarations
+command     PlanSyntaxUpdate    call plan#syntax_update()
