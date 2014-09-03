@@ -11,6 +11,7 @@ highlight link PlanDone     Include
 highlight link PlanCheck    Statement
 highlight link PlanComment  Comment
 highlight link PlanFuture   Constant
+highlight link PlanOld      Error
 
 " Date format definition
 if exists("g:plan_date_format")
@@ -25,6 +26,18 @@ let s:one_day = 86400
 " Highlight entries to be done today
 let s:dateregex=strftime(printf("syntax match PlanToday /.*%s.*/ contains=PlanDoneOld", s:plan_date_format))
 exec s:dateregex
+
+" Highlight items since beginning of week
+let s:date = localtime()
+let s:date -= s:one_day
+while 1
+    let s:dateregex=strftime(printf("syntax match PlanOld /.*%s.*/", s:plan_date_format), s:date)
+    exec s:dateregex
+    let s:date -= s:one_day
+    if strftime("%u", s:date) == "6"
+        break
+    endif
+endwhile
 
 " Highlight all items done during this week
 let s:date = localtime()
