@@ -11,7 +11,9 @@ function plan#date_add () range
     while lnum <= a:lastline
         let currentline = getline(lnum)
 
-        call setline(lnum, printf("%s .%s (%s)", currentline, repeat(".", 53-strlen(currentline)), strftime("%Y/%m/%d")))
+        if !plan#is_done(currentline)
+            call setline(lnum, printf("%s .%s (%s)", currentline, repeat(".", 53-strlen(currentline)), strftime("%Y/%m/%d")))
+        endif
 
         let lnum += 1
     endwhile
@@ -25,7 +27,9 @@ function plan#date_del () range
     while lnum <= a:lastline
         let currentline = getline(lnum)
 
-        call setline(lnum, substitute(currentline, ' \.\+ ([^)]\+)$', "", ""))
+        if !plan#is_done(currentline)
+            call setline(lnum, substitute(currentline, ' \.\+ ([^)]\+)$', "", ""))
+        endif
 
         let lnum += 1
     endwhile
