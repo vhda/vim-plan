@@ -33,7 +33,7 @@ syntax clear PlanOld
 let s:one_day = 86400
 
 " Highlight entries to be done today
-let s:dateregex=strftime(printf("syntax match PlanToday /.*%s.*/ contains=PlanDoneOld", s:plan_date_format))
+let s:dateregex=strftime(printf("syntax match PlanToday /.*(%s).*/ contains=PlanDoneOld", s:plan_date_format))
 exec s:dateregex
 
 " Highlight items since beginning of week
