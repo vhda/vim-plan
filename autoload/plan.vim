@@ -45,7 +45,7 @@ function plan#date_inc () range
         let l:time      = system(printf("date -d %s +%%s", substitute(currentline, '.* (\(.*\)).*', '\1', '')))
 
         if !plan#is_done(currentline)
-            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time + 24*60*60)), ''))
+            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time + v:count1*24*60*60)), ''))
         endif
 
         let lnum += 1
@@ -62,7 +62,7 @@ function plan#date_dec () range
         let l:time      = system(printf("date -d %s +%%s", substitute(currentline, '.* (\(.*\)).*', '\1', '')))
 
         if !plan#is_done(currentline)
-            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time - 24*60*60)), ''))
+            call setline(lnum, substitute(currentline, '\(.* (\).*\().*\)', printf('\1%s\2', strftime("%Y/%m/%d", l:time - v:count1*24*60*60)), ''))
         endif
 
         let lnum += 1

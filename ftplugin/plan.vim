@@ -26,14 +26,16 @@ if exists("g:plan_default_config")
     noremap  <leader>D  :call plan#date_add()<CR>
     noremap  <leader>rD :call plan#date_del()<CR>
     noremap  <leader>u  :call plan#date_del()<CR>:call plan#date_add()<CR>
-    noremap  <leader>i  :call plan#date_inc()<CR>
-    noremap  <leader>x  :call plan#date_dec()<CR>
-    nnoremap <<         :call plan#shift_left()<CR>
-    nnoremap >>         :call plan#shift_right()<CR>
-    vnoremap <          :call plan#shift_left()<CR>
-    vnoremap >          :call plan#shift_right()<CR>
-    inoremap <C-d>      <ESC>:call plan#shift_left()<CR>i
-    inoremap <C-t>      <ESC>:call plan#shift_right()<CR>i
+    nnoremap <leader>i  :<C-U>call plan#date_inc()<CR>
+    nnoremap <leader>x  :<C-U>call plan#date_dec()<CR>
+    vnoremap <leader>i  :call plan#date_inc()<CR>
+    vnoremap <leader>x  :call plan#date_dec()<CR>
+    nnoremap <<         :<C-U>call plan#shift_left()<CR>
+    nnoremap >>         :<C-U>call plan#shift_right()<CR>
+    vnoremap <          :<C-U>call plan#shift_left()<CR>
+    vnoremap >          :<C-U>call plan#shift_right()<CR>
+    inoremap <C-d>      <ESC>:call plan#shift_left()<CR>a
+    inoremap <C-t>      <ESC>:call plan#shift_right()<CR>a
     noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d)$/ %%")<CR>:cclose<CR>
 endif
 
