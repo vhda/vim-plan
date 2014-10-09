@@ -7,10 +7,10 @@
 " Define highlight links
 highlight link PlanToday    WarningMsg
 highlight link PlanDoneOld  Type
-highlight link PlanDone     Include
+highlight link PlanDone     NonText
 highlight link PlanCheck    Statement
 highlight link PlanComment  Comment
-highlight link PlanFuture   Constant
+highlight link PlanFuture   Title
 highlight link PlanOld      Error
 
 " Date format definition
