@@ -20,6 +20,15 @@ else
     let s:plan_date_format  = "%Y\\/%m\\/%d"
 endif
 
+" Clear existing syntax definitions
+syntax clear PlanToday
+syntax clear PlanDoneOld
+syntax clear PlanDone
+syntax clear PlanCheck
+syntax clear PlanComment
+syntax clear PlanFuture
+syntax clear PlanOld
+
 " Auxilliary constants
 let s:one_day = 86400
 
