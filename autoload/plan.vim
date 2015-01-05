@@ -210,6 +210,12 @@ endfunction
 function plan#syntax_update ()
 "{{{
     runtime syntax/plan.vim
+
+    " Check if Calendar is enabled and update it
+    if bufexists("__Calendar")
+        call Calendar(0)
+    endif
+    wincmd p
 endfunction
 "}}}
 
