@@ -4,14 +4,14 @@
 " Last Update:  Thu 12 Sep 2013 23:56:16 PM WEST
 " Version:      1.0
 
-" Define highlight links
-highlight link PlanToday    WarningMsg
-highlight link PlanDoneOld  Type
-highlight link PlanDone     NonText
-highlight link PlanCheck    Statement
-highlight link PlanComment  Comment
-highlight link PlanFuture   Title
-highlight link PlanOld      Error
+" Define highlight colors
+highlight PlanToday    term=standout cterm=bold ctermfg=1 guifg=Red
+highlight PlanDoneOld  term=underline cterm=bold ctermfg=2 gui=bold guifg=#60ff60
+highlight PlanDone     term=bold cterm=bold ctermfg=4 gui=bold guifg=Blue
+highlight PlanCheck    term=bold cterm=bold ctermfg=3 gui=bold guifg=#ffff60
+highlight PlanComment  term=bold cterm=bold ctermfg=6 guifg=#80a0ff
+highlight PlanFuture   term=bold cterm=bold ctermfg=5 gui=bold guifg=Magenta
+highlight PlanOld      term=reverse cterm=bold ctermfg=7 ctermbg=1 guifg=White guibg=Red
 
 " Date format definition
 if exists("g:plan_date_format")
