@@ -36,16 +36,13 @@ let s:one_day = 86400
 let s:dateregex=strftime(printf("syntax match PlanToday /.*(%s).*/ contains=PlanDoneOld", s:plan_date_format))
 exec s:dateregex
 
-" Highlight items since beginning of week
+" Highlight old items still not done since previous week
 let s:date = localtime()
 let s:date -= s:one_day
-while 1
+while s:date >= localtime() - 7*s:one_day
     let s:dateregex=strftime(printf("syntax match PlanOld /.*%s.*/", s:plan_date_format), s:date)
     exec s:dateregex
     let s:date -= s:one_day
-    if strftime("%u", s:date) == "6"
-        break
-    endif
 endwhile
 
 " Highlight all items done during this week
