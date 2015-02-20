@@ -32,8 +32,8 @@ if exists("g:plan_default_config")
     vnoremap <leader>x  :call plan#date_dec()<CR>
     nnoremap <<         :<C-U>call plan#shift_left()<CR>
     nnoremap >>         :<C-U>call plan#shift_right()<CR>
-    vnoremap <          :<C-U>call plan#shift_left()<CR>
-    vnoremap >          :<C-U>call plan#shift_right()<CR>
+    vnoremap <          :call plan#shift_left()<CR>
+    vnoremap >          :call plan#shift_right()<CR>
     inoremap <C-d>      <ESC>:call plan#shift_left()<CR>a
     inoremap <C-t>      <ESC>:call plan#shift_right()<CR>a
     noremap  <leader>ps :execute strftime("vimgrep /%Y\\/%m\\/%d)$/ %%")<CR>:cclose<CR>

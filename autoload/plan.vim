@@ -130,7 +130,7 @@ function plan#shift_right () range
 "{{{
     let lnum   = a:firstline
 
-    while lnum <= a:lastline
+    while lnum <= a:lastline + v:count1 - 1
         let currentline = getline(lnum)
         let bullet_dict = plan#get_bullet(currentline)
 
@@ -147,7 +147,7 @@ function plan#shift_right () range
         let lnum += 1
     endwhile
 
-    execute a:firstline . "," . a:lastline . ">"
+    execute a:firstline . "," . (a:lastline + v:count1 - 1) . ">"
 endfunction
 "}}}
 
@@ -155,7 +155,7 @@ function plan#shift_left () range
 "{{{
     let lnum   = a:firstline
 
-    while lnum <= a:lastline
+    while lnum <= a:lastline + v:count1 - 1
         let currentline = getline(lnum)
         let bullet_dict = plan#get_bullet(currentline)
 
@@ -176,7 +176,7 @@ function plan#shift_left () range
         let lnum += 1
     endwhile
 
-    execute a:firstline . "," . a:lastline . "<"
+    execute a:firstline . "," . (a:lastline + v:count1 - 1) . "<"
 endfunction
 "}}}
 
