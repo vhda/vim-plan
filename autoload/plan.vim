@@ -137,6 +137,10 @@ function plan#shift_right () range
         if bullet_dict['index'] >= 0 && bullet_dict['index'] + 1 < len(g:plan_bullets_list)
             let new_bullet = g:plan_bullets_list[bullet_dict['index'] + 1]
             let currentline= substitute(currentline, bullet_dict['bullet'], new_bullet, "")
+            " Remove extra .. characters
+            if match(currentline, '\. (.*)\(\s\+[XV]\)\?$') >= 0
+                let currentline= substitute(currentline, '\.\.', '', '')
+            endif
             call setline(lnum, currentline)
         endif
 
@@ -162,6 +166,10 @@ function plan#shift_left () range
                 let bullet = "\\" . bullet
             endif
             let currentline= substitute(currentline, bullet, new_bullet, "")
+            " Repeat .. characters
+            if match(currentline, '\. (.*)\(\s\+[XV]\)\?$') >= 0
+                let currentline= substitute(currentline, '\.\.', '&&', '')
+            endif
             call setline(lnum, currentline)
         endif
 
