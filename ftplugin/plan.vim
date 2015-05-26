@@ -51,3 +51,9 @@ let &comments=join(s:bullets_list, ",")
 
 " Command declarations
 command     PlanSyntaxUpdate    call plan#syntax_update()
+
+" Automatic plan syntax update
+augroup vim-plan-autosyntax
+    autocmd!
+    autocmd CursorHold * call plan#syntax_update()
+augroup END
