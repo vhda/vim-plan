@@ -40,7 +40,7 @@ exec s:dateregex
 let s:date = localtime()
 let s:date -= s:one_day
 while s:date >= localtime() - 7*s:one_day
-    let s:dateregex=strftime(printf("syntax match PlanOld /.*%s.*/", s:plan_date_format), s:date)
+    let s:dateregex=strftime(printf("syntax match PlanOld /.*(%s).*/", s:plan_date_format), s:date)
     exec s:dateregex
     let s:date -= s:one_day
 endwhile
@@ -48,7 +48,7 @@ endwhile
 " Highlight all items done during this week
 let s:date = localtime()
 while 1
-    let s:dateregex=strftime(printf("syntax match PlanDoneOld /(%s.*\[XV\]$/", s:plan_date_format), s:date)
+    let s:dateregex=strftime(printf("syntax match PlanDoneOld /(%s).*\[XV\]$/", s:plan_date_format), s:date)
     exec s:dateregex
     let s:date -= s:one_day
     if strftime("%u", s:date) == "5"
