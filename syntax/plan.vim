@@ -71,4 +71,4 @@ syntax match PlanDone       /.*X$/ contains=PlanToday,PlanDoneOld
 syntax match PlanCheck      /.*V$/
 
 " Highlight headers
-syntax match PlanComment    /^---.*\n.*\n---.*/
+syntax match PlanComment    /^---.*\n\(.*\n\)\{-1,\}---.*/
