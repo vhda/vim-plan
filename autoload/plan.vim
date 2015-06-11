@@ -222,8 +222,8 @@ function plan#syntax_update ()
     " Check if Calendar is enabled and update it
     if bufexists("__Calendar")
         call Calendar(0)
+        wincmd p
     endif
-    wincmd p
 endfunction
 "}}}
 
