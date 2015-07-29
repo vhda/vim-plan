@@ -194,6 +194,12 @@ function plan#get_fold_text ()
 "{{{
     let markers = split(&foldmarker, ',')
     let line = getline(v:foldstart)
+    if substitute(line, '\s', '', '') == markers[0]
+      let line = getline(v:foldstart + 1)
+      if line[0] == g:plan_bullets_list[0]
+        return line
+      endif
+    endif
     let sub = substitute(line, markers[0], repeat(v:folddashes, len(markers[0])), 'g')
     if (substitute(sub, '\s*', '', '') == "...")
         let line = getline(v:foldstart + 1)
